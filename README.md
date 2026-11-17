@@ -66,7 +66,7 @@ Client ID identifica o aplicativo e o segredo de sessão fica apenas no ambiente
 
    Para iniciar sem modo de observação, use `npm start`.
 
-6. Acesse <http://localhost:3001>.
+6. Acesse <http://localhost:3000>.
 
 O servidor não sobe se `SESSION_SECRET` estiver ausente ou tiver menos de 32 caracteres. Sem
 `GOOGLE_CLIENT_ID`, o cadastro e o login por e-mail continuam funcionando; o botão Google mostra que
