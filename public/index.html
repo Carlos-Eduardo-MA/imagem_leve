@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="dark" />
+    <meta
+      name="description"
+      content="Otimize imagens em segundos. Compare o resultado e baixe em JPEG, PNG ou WebP."
+    />
+    <title>Imagem Leve — diminua o tamanho das suas imagens</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="/">
+        <span class="brand-mark" aria-hidden="true"></span>
+        Imagem Leve
+      </a>
+      <button id="logout-button" class="btn btn-ghost hidden" type="button">Sair</button>
+    </header>
+
+    <main class="main">
+      <!-- ============ Tela de login ============ -->
+      <section id="auth-view" class="auth-view hidden">
+        <div class="card auth-card">
+          <p class="auth-card-label">ACESSO SEGURO</p>
+          <h2 id="auth-title">Acesse sua conta</h2>
+          <p id="auth-subtitle" class="auth-subtitle">Entre para continuar no compactador.</p>
+
+          <p class="auth-switch">
+            <span id="auth-switch-prompt">Ainda não tem conta?</span>
+            <button id="auth-toggle" class="text-button" type="button">Criar conta</button>
+          </p>
+
+          <div id="google-button" class="google-slot">
+            <button id="google-fallback" class="google-fallback" type="button" disabled>
+              <svg viewBox="0 0 48 48" aria-hidden="true">
+                <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5Z" transform="translate(0 6)" />
+                <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.27 5.48-4.79 7.18l7.73 6C44.39 37.84 46.98 31.7 46.98 24.55Z" transform="translate(0 0)" />
+                <path fill="#FBBC05" d="M10.53 28.59a14.4 14.4 0 0 1 0-9.18l-7.98-6.19a23.9 23.9 0 0 0 0 21.56l7.98-6.19Z" transform="translate(0 0)" />
+                <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.9-5.8l-7.73-6c-2.15 1.45-4.92 2.3-8.17 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48Z" transform="translate(0 -6)" />
+              </svg>
+              Continuar com Google
+            </button>
+          </div>
+
+          <p id="setup-hint" class="setup-hint hidden">
+            Configure <code>GOOGLE_CLIENT_ID</code> no servidor para ativar o acesso Google.
+          </p>
+
+          <div class="auth-divider"><span>ou use seu e-mail</span></div>
+
+          <form id="auth-form" class="auth-form" novalidate>
+            <label id="name-field" class="field hidden" for="auth-name">
+              <span>Nome</span>
+              <input
+                id="auth-name"
+                name="name"
+                type="text"
+                autocomplete="name"
+                maxlength="80"
+                placeholder="Como podemos chamar você?"
+              />
+            </label>
+
+            <label class="field" for="auth-email">
+              <span>E-mail</span>
+              <input
+                id="auth-email"
+                name="email"
+                type="email"
+                autocomplete="email"
+                maxlength="254"
+                placeholder="voce@exemplo.com"
+                required
+              />
+            </label>
+
+            <label class="field" for="auth-password">
+              <span>Senha</span>
+              <input
+                id="auth-password"
+                name="password"
+                type="password"
+                autocomplete="current-password"
+                minlength="1"
+                maxlength="72"
+                placeholder="Sua senha"
+                required
+              />
+            </label>
+
+            <p id="password-hint" class="password-hint hidden">
+              Use pelo menos 12 caracteres e evite reutilizar senhas.
+            </p>
+            <p id="auth-message" class="message" role="alert" aria-live="polite"></p>
+
+            <button id="auth-submit" class="btn btn-primary btn-block" type="submit">Entrar</button>
+          </form>
+
+          <p class="auth-privacy">Seus arquivos são processados temporariamente e não ficam salvos.</p>
+        </div>
+
+        <div class="auth-copy">
+          <p class="eyebrow">Imagem Leve · Compactador online</p>
+          <h1>Menos peso.<br /><span>Mais espaço.</span></h1>
+          <p class="lede">
+            Otimize imagens em segundos. Compare o resultado e baixe no formato certo para cada
+            projeto.
+          </p>
+          <ul class="feature-list">
+            <li>Até 15 MB por imagem</li>
+            <li>JPEG, PNG, WebP e AVIF</li>
+            <li>Seus arquivos não ficam armazenados</li>
+          </ul>
+
+          <div class="studio-preview" aria-hidden="true">
+            <div class="preview-toolbar">
+              <span class="window-dots"><i></i><i></i><i></i></span>
+              <span class="preview-tool-label">PRÉVIA DE OTIMIZAÇÃO</span>
+              <span class="preview-live"><i></i> DEMO</span>
+            </div>
+            <div class="preview-canvas">
+              <div class="preview-scene">
+                <i class="scene-sun"></i>
+                <i class="scene-cloud"></i>
+                <i class="scene-hill scene-hill-back"></i>
+                <i class="scene-hill scene-hill-front"></i>
+              </div>
+              <div class="preview-caption">
+                <span>paisagem-de-verao.jpg</span>
+                <strong>−78%</strong>
+              </div>
+            </div>
+            <div class="preview-footer">
+              <span>ANTES <b>5,0 MB</b></span>
+              <span class="preview-arrow">→</span>
+              <span>DEPOIS <b>1,1 MB</b></span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ Área de trabalho ============ -->
+      <section id="app-view" class="app-view hidden">
+        <div class="app-head">
+          <div>
+            <p class="eyebrow">Sua área</p>
+            <h1 id="greeting">Olá</h1>
+          </div>
+        </div>
+
+        <form id="upload-form" class="card upload-card" novalidate>
+          <h2>Enviar imagem</h2>
+
+          <label class="dropzone" for="file-input">
+            <input
+              id="file-input"
+              type="file"
+              accept="image/jpeg,image/png,image/webp,image/avif"
+            />
+            <span class="dropzone-mark" aria-hidden="true">↑</span>
+            <strong id="dropzone-title">Escolha uma imagem</strong>
+            <span class="dropzone-hint">JPEG, PNG, WebP ou AVIF · até 15 MB</span>
+          </label>
+
+          <p id="upload-message" class="message" role="alert" aria-live="polite"></p>
+
+          <button id="compress-button" class="btn btn-primary btn-block" type="submit" disabled>
+            Diminuir imagem
+          </button>
+        </form>
+
+        <section id="result-view" class="card result-card hidden" aria-live="polite">
+          <div class="result-head">
+            <div>
+              <p class="eyebrow">Pronto</p>
+              <h2>Imagem otimizada</h2>
+            </div>
+            <button id="new-image-button" class="btn btn-ghost btn-sm" type="button">
+              Enviar outra
+            </button>
+          </div>
+
+          <div class="result-body">
+            <div class="preview-frame">
+              <img id="result-preview" alt="Prévia da imagem otimizada" />
+            </div>
+
+            <div class="result-details">
+              <dl class="stats">
+                <div>
+                  <dt>Antes</dt>
+                  <dd id="original-size">—</dd>
+                </div>
+                <div>
+                  <dt>Depois</dt>
+                  <dd id="compressed-size">—</dd>
+                </div>
+                <div>
+                  <dt>Redução</dt>
+                  <dd id="savings" class="savings">—</dd>
+                </div>
+                <div>
+                  <dt>Dimensões</dt>
+                  <dd id="dimensions">—</dd>
+                </div>
+              </dl>
+
+              <label class="field">
+                <span>Formato do download</span>
+                <select id="format-select">
+                  <option value="jpeg">JPEG (.jpg)</option>
+                  <option value="png">PNG (.png)</option>
+                  <option value="webp">WebP (.webp)</option>
+                </select>
+              </label>
+
+              <button id="download-button" class="btn btn-primary btn-block" type="button">
+                Baixar imagem
+              </button>
+
+              <p id="result-message" class="message" role="alert" aria-live="polite"></p>
+              <p class="hint">O resultado fica disponível por 30 minutos.</p>
+            </div>
+          </div>
+        </section>
+      </section>
+    </main>
+
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <script src="/app.js" defer></script>
+  </body>
+</html>
