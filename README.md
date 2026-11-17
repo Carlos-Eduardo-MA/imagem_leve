@@ -85,7 +85,7 @@ Execute `npm test` para rodar os testes de autenticação.
 4. Em **Origens JavaScript autorizadas**, adicione:
 
    ```text
-   http://localhost:3001
+   http://localhost:3000
    ```
 
    Não é necessário cadastrar URI de redirecionamento: o botão usa o fluxo de ID token do Google.
